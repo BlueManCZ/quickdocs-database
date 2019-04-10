@@ -55,9 +55,9 @@ CREATE TABLE IF NOT EXISTS system_dependencies (
 
 CREATE TABLE IF NOT EXISTS system_extracted_info (
   system_id BIGINT UNSIGNED NOT NULL,
-  packages LONGTEXT NOT NULL DEFAULT '',
+  packages LONGTEXT NOT NULL,
   failed TINYINT NOT NULL DEFAULT '0',
-  error_log TEXT NOT NULL DEFAULT '',
+  error_log TEXT NOT NULL,
   FOREIGN KEY (system_id) REFERENCES system (id) ON DELETE CASCADE,
   UNIQUE KEY (system_id)
 );
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS system_extracted_info (
 CREATE TABLE IF NOT EXISTS cliki (
   project_name VARCHAR(64) NOT NULL,
   body TEXT NOT NULL,
-  updated_at INTEGER NOT NULL,
+  updated_at BIGINT NOT NULL,
   UNIQUE KEY (project_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=binary;
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS repos_info (
   forks_count INTEGER NOT NULL,
   stars_count INTEGER,
   created_at INTEGER NOT NULL,
-  updated_at INTEGER NOT NULL,
+  updated_at BIGINT NOT NULL,
   UNIQUE KEY (project_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=binary;
 
